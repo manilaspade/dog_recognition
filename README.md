@@ -7,3 +7,4 @@
   * [GoogleNet categories](https://github.com/HoldenCaulfieldRye/caffe/blob/master/data/ilsvrc12/synset_words.txt)
 * [chainer](https://github.com/pfnet/chainer) neural net library
 
+## [Results](https://github.com/yskmt/dog_recognition/blob/master/dog_recog.ipynb)
