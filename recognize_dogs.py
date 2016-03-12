@@ -4,6 +4,10 @@ import sys
 import cv2
 import numpy as np
 
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import imshow
+from PIL import Image
+
 import chainer
 from chainer import cuda
 import chainer.functions as F
@@ -96,6 +100,21 @@ def cnn_dog(photo_file, idx, categories_dog, func, gpu=-1, verbose=False,
 
     return False
 
+def recog_dogs(image):
+
+    imsize = np.array(image).shape[:-1]
+
+    k = 0
+    for i in range(imsize[1]/175):
+        for j in range(imsize[0]/175):
+            k+=1
+            image_c = image.crop([175*i, 175*j, 175*(i+1), 175*(j+1)])
+            image_c.save('%d%d.png' %(i,j))
+
+            imshow(np.asarray(image_c))
+            plt.show()
+
+            cnn_dog('%d%d.png' %(i,j), k, categories_dog, func, verbose=True)
 
 ###############################################################################
 # initialization of the caffe model
